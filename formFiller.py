@@ -16,6 +16,7 @@ from pyairmore.services.messaging import MessagingService
 from re import findall as findnum
 
 
+import creds
 # def getText():
 
 
@@ -65,7 +66,7 @@ accounts = Ghosts.query.all()
 
 
 
-phoneNumber = ""
+phoneNumber = creds.phoneNumber
 
 for i in accounts:
     #start session

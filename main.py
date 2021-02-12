@@ -6,7 +6,7 @@ from random import randint
 from datetime import timedelta,date
 from hashlib import sha256
 
-#from namesClean import clean
+from namesClean import clean
 
 app = Flask(__name__)   
 #database configuration
@@ -39,8 +39,7 @@ if glob("names.txt"):
     print("found names.txt")
     # pass
 else:
-    pass
-    #clean()
+    clean()
 
 @app.route("/")
 def run():
@@ -61,7 +60,7 @@ def run():
             fName = i.replace("\n", ' ')
             sName = list[-list.index(i)].replace("\n", ' ')
             name = fName + sName
-            password = name.lower().replace(" ", '') + age
+            password = name.lower().replace(" ", '') + age + str(randint(int(age), 1000))
             passphrase = sha256((password).encode('utf-8')).hexdigest()#hashing passwords
             email = password #+ "@gmail.com"
             # names.append(password)
